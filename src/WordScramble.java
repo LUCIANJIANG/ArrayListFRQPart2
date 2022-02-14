@@ -11,11 +11,31 @@ public class WordScramble
      *  Postcondition: the string returned was created from word as follows:
      *  - the word was scrambled, beginning at the first letter and continuing from left to right
      *  - two consecutive letters consisting of "A" followed by a letter that was not "A" were swapped
-     *  - letters were swapped at most once
+     *  *  - letters were swapped at most once
      */
     public static String scrambleWord(String word)
     {
-        /* to be implemented in part (a) */
+        int cIndex = 0;
+        String str = "";
+        while (cIndex < word.length() - 1)
+        {
+            if (word.substring(cIndex, cIndex + 1).equals("A") && !word.substring(cIndex + 1, cIndex + 2).equals("A"))
+            {
+                str += word.substring(cIndex + 1, cIndex + 2);
+                str += "A";
+                cIndex += 2;
+            }
+            else
+            {
+                str += word.substring(cIndex, cIndex + 1);
+                cIndex += 1;
+            }
+        }
+        if (cIndex < word.length())
+        {
+            str += word.substring(cIndex);
+        }
+        return str;
     }
 
     /** Modifies wordList by replacing each word with its scrambled
@@ -32,6 +52,19 @@ public class WordScramble
      */
     public static void scrambleOrRemove(ArrayList<String> wordList)
     {
-        /* to be implemented in part (b) */
+        int idx = 0;
+        while (idx < wordList.size())
+        {
+            String str = wordList.get(idx);
+            if (str.equals(scrambleWord(str)))
+            {
+                wordList.remove(idx);
+            }
+            else
+            {
+                wordList.set(idx, scrambleWord(str));
+                idx++;
+            }
+        }
     }
 }

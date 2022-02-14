@@ -17,9 +17,9 @@ public class WordScrambleTest
         testScramble(result3, "WHOA", 3);
         String result4 = WordScramble.scrambleWord("AARDVARK");
         testScramble(result4, "ARADVRAK", 4);
-        String result5 = WordScramble.scrambleWord("EGGS");
-        testScramble(result5, "EGGS", 5);
+        String result5 = WordScramble.scrambleWord("EGGS");testScramble(result5, "EGGS", 5);
         String result6 = WordScramble.scrambleWord("A");
+
         testScramble(result6, "A", 6);
         String result7 = WordScramble.scrambleWord("");
         testScramble(result7, "", 7);
@@ -81,7 +81,7 @@ public class WordScrambleTest
             System.out.println("*****FAIL*****");
             failedTests++;
         }
-        System.out.println(" Expected: " + expected);
+       System.out.println(" Expected: " + expected);
         System.out.println("   Actual: " + actual);
     }
 }
